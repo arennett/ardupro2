@@ -56,13 +56,6 @@ void setup() {
 	wqMessage.cmd=tSenso2Cmd::game_init;
 	wqWriter.write(wqMessage);
 
-	/*
-	 delay(3000);
-	 pMessage = new OledMessage(tOledCmd::CMD_BMP_GAME_SELECT);
-	 messageQueue.push(pMessage);
-	 pMessage = new OledMessage(tOledCmd::CMD_UPDATE);
-	 messageQueue.push(pMessage);*/
-
 	for (int i = 0; i < ANZ_COLORS; i++) {
 		pinMode(pinButton[i], INPUT_PULLUP);
 		pinMode(pinLED[i], OUTPUT);
@@ -180,6 +173,7 @@ void ledWrite(tLedColor color, unsigned char state) {
 	if (state == HIGH) {
 		MPRINTLNSVAL("ledWrite:: LED on:",color);
 		tone(TONE_PIN, tones[color]);
+
 	} else {
 		noTone(TONE_PIN);
 	}
