@@ -4,6 +4,7 @@
 #include <WQDefines.h>
 #include <WQWriter.h>
 #include <XTools.h>
+#include <Senso2def.h>
 #include "Senso.h"
 #include "SimpleTimer.h"
 #include "pitches.h"
@@ -52,8 +53,8 @@ void setup() {
 	pinMode(PIN_DATA, OUTPUT);
 	pinMode(PIN_CLOCK, OUTPUT);
 
-	pMessage = new CMqMessage(tMqCmd::game_init, 0, 0);
-	messageQueue.push(pMessage);
+	wqMessage.cmd=tSenso2Cmd::game_init;
+	wqWriter.write(wqMessage);
 
 	/*
 	 delay(3000);
